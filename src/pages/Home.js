@@ -36,17 +36,14 @@ const ProductGrid = styled.div`
   margin-bottom: 50px;
 `;
 
-const Banner = styled.div`
+const BannerContainer = styled.div`
   width: 100%;
-  height: 300px;
-  background-color: #ffebf2;
-  text-align: center;
-  line-height: 300px;
-  font-size: 24px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-weight: bold;
-  color: #ff4081;
+  margin-top: auto;
+`;
+
+const BannerImageStyled = styled.img`
+  width: 100%;
+  height: auto;
 `;
 
 const Home = ({ isSidebarOpen, toggleSidebar }) => {
@@ -84,9 +81,9 @@ const Home = ({ isSidebarOpen, toggleSidebar }) => {
             />
           </Link>
         </ProductGrid>
-        <Banner>
-          <img src={BannerImage} alt="배너 이미지" width="100%" height="100%" />
-        </Banner>
+        <BannerContainer>
+          <BannerImageStyled src={BannerImage} />
+        </BannerContainer>
       </Content>
     </Layout>
   );
