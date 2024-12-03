@@ -2,6 +2,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuSection from '../components/MenuSection';
+import EventCard from '../components/EventCard';
+import EventBanner1Image from '../img/eventBanner1.png';
+import EventBanner2Image from '../img/eventBanner2.png';
+import EventBanner3Image from '../img/eventBanner3.png';
 
 const Layout = styled.div`
   display: flex;
@@ -23,7 +27,6 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 2px solid #ddd;
 `;
 
 const Title = styled.h1`
@@ -32,52 +35,13 @@ const Title = styled.h1`
   color: #333;
 `;
 
-const EventList = styled.ul`
-  list-style-type: none;
-  margin: 20px 0;
-  padding: 0;
-`;
-
-const EventItem = styled.li`
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const EventTitle = styled.h2`
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 10px;
-`;
-
-const EventDescription = styled.p`
-  font-size: 16px;
-  color: #555;
+const EventGrid = styled.div`
+  display: flex;
+  flex-direction: column; /* 세로 배치 */
+  gap: 20px; /* 항목 간 간격 */
 `;
 
 const EventPage = ({ isSidebarOpen, toggleSidebar }) => {
-  const eventData = [
-    {
-      title: '이벤트 1',
-      description: '이벤트 1에 참여하고 다양한 혜택을 누리세요!',
-    },
-    {
-      title: '이벤트 2',
-      description: '이벤트 2에 참여하시면 특별한 상품을 받아보실 수 있습니다!',
-    },
-    {
-      title: '이벤트 3',
-      description: '이벤트 3에서 할인 혜택을 즐기세요!',
-    },
-  ];
-
   return (
     <Layout>
       <MenuSection isSidebarOpen={isSidebarOpen} />
@@ -85,14 +49,18 @@ const EventPage = ({ isSidebarOpen, toggleSidebar }) => {
         <Header>
           <Title>이벤트</Title>
         </Header>
-        <EventList>
+        <EventGrid>
+          <EventCard img={<img src={EventBanner1Image} />} />
+          <EventCard img={<img src={EventBanner2Image} />} />
+          <EventCard img={<img src={EventBanner3Image} />} />
+        </EventGrid>
+        {/* <EventList>
           {eventData.map((event, index) => (
             <EventItem key={index}>
-              <EventTitle>{event.title}</EventTitle>
-              <EventDescription>{event.description}</EventDescription>
+              <EventImage src={event.image} />
             </EventItem>
           ))}
-        </EventList>
+        </EventList> */}
       </Content>
     </Layout>
   );

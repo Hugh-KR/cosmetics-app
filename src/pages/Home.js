@@ -59,7 +59,7 @@ const Home = ({ isSidebarOpen, toggleSidebar }) => {
           <Link to="/product1">
             <ProductCard
               url="/product1"
-              img={<img src={Product1Image} width="100%" height="100%" />}
+              img={<img src={Product1Image} />}
               name="Product1"
               rating="4.5"
               review="45"
@@ -68,7 +68,7 @@ const Home = ({ isSidebarOpen, toggleSidebar }) => {
           <Link to="/product2">
             <ProductCard
               url="/product2"
-              img={<img src={Product2Image} width="100%" height="100%" />}
+              img={<img src={Product2Image} />}
               name="Product2"
               rating="4.2"
               review="105"
@@ -77,7 +77,7 @@ const Home = ({ isSidebarOpen, toggleSidebar }) => {
           <Link to="/product3">
             <ProductCard
               url="/product3"
-              img={<img src={Product3Image} width="100%" height="100%" />}
+              img={<img src={Product3Image} />}
               name="Product3"
               rating="4.7"
               review="20"
