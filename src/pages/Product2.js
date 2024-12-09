@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import MenuSection from '../components/MenuSection';
 import Product2Image from '../img/product2.png';
+// 예시용 추천 이미지
+import Recommended1 from '../img/recommended1.jpg';
+import Recommended2 from '../img/recommended2.jpg';
 
 const Layout = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: auto; /* 기존 100vh 를 auto로 바꿔서 내용 증가에 따라 늘어나게 함 */
+  flex-direction: column;
 `;
 
 const Content = styled.div`
@@ -82,6 +85,52 @@ const ReviewContent = styled.p`
   color: #555;
 `;
 
+// 추천 섹션 스타일
+const RecommendedSection = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  padding: 0 50px 50px;
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+`;
+
+const RecommendedTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const RecommendedSlider = styled.div`
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+  /* 스크롤바 스타일 간단화 */
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+`;
+
+const RecommendedItem = styled.div`
+  min-width: 200px;
+  min-height: 200px
+  flex-shrink: 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 20px;
+`;
+
+const RecommendedImage = styled.img`
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+`;
+
 const Product2 = ({ isSidebarOpen, toggleSidebar }) => {
   // 성분 목록을 배열로 관리
   const ingredients = [
@@ -124,6 +173,18 @@ const Product2 = ({ isSidebarOpen, toggleSidebar }) => {
     },
   ];
 
+  // 추천 상품 목록 (비슷한 성분)
+  const recommendedItems = [
+    { img: Recommended1 },
+    { img: Recommended2 },
+    { img: Recommended1 },
+    { img: Recommended2 },
+    { img: Recommended1 },
+    { img: Recommended2 },
+    { img: Recommended1 },
+    { img: Recommended2 },
+  ];
+
   return (
     <Layout>
       <MenuSection isSidebarOpen={isSidebarOpen} />
@@ -146,6 +207,18 @@ const Product2 = ({ isSidebarOpen, toggleSidebar }) => {
             </IngredientsList>
           </Ingredients>
         </InfoSection>
+
+        {/* 비슷한 성분 추천 섹션 */}
+        <RecommendedSection>
+          <RecommendedTitle>비슷한 성분의 다른 제품</RecommendedTitle>
+          <RecommendedSlider>
+            {recommendedItems.map((item, idx) => (
+              <RecommendedItem key={idx}>
+                <RecommendedImage src={item.img} />
+              </RecommendedItem>
+            ))}
+          </RecommendedSlider>
+        </RecommendedSection>
 
         <ReviewsSection>
           <h2>후기</h2>
